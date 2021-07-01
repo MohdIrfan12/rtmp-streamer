@@ -59,9 +59,7 @@ public class ExampleRtmpActivity extends AppCompatActivity
         rtmpCamera1.setCustomAudioEffect(new CustomAudioEffect() {
             @Override
             public byte[] process(byte[] pcmBuffer) {
-                // perform noise cancellation here.
-                System.out.println("===setCustomAudioEffect====");
-                return new byte[0];
+                return performAudioEffect(pcmBuffer);
             }
         });
         surfaceView.getHolder().addCallback(this);
@@ -232,5 +230,9 @@ public class ExampleRtmpActivity extends AppCompatActivity
             button.setText(getResources().getString(R.string.start_button));
         }
         rtmpCamera1.stopPreview();
+    }
+
+    private byte[] performAudioEffect(byte[] pcmBuffer) {
+        return new byte[0];
     }
 }
